@@ -7,19 +7,19 @@ export function NavBar() {
 
   return (
     <nav className="bg-[var(--bg-secondary)] border-b border-[var(--border-color)]">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4">
+        <div className="flex items-center justify-between h-14 sm:h-16">
           <div 
             className="flex items-center gap-2 cursor-pointer"
             onClick={() => navigate('/')}
           >
-            <span className="text-xl font-bold text-[var(--text-primary)]">Crypto AI</span>
+            <span className="text-lg sm:text-xl font-bold text-[var(--text-primary)]">Crypto AI</span>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `px-4 py-2 rounded-lg text-base transition-colors ${
+                `px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg text-sm sm:text-base transition-colors ${
                   isActive
                     ? 'bg-[var(--bg-hover)] text-[var(--text-primary)]'
                     : 'text-[var(--text-secondary)] hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)]'
@@ -31,7 +31,7 @@ export function NavBar() {
             <NavLink
               to="/chat"
               className={({ isActive }) =>
-                `px-4 py-2 rounded-lg text-base transition-colors ${
+                `px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg text-sm sm:text-base transition-colors ${
                   isActive
                     ? 'bg-[var(--bg-hover)] text-[var(--text-primary)]'
                     : 'text-[var(--text-secondary)] hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)]'

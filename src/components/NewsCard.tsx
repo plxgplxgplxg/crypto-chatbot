@@ -37,18 +37,18 @@ export function NewsCard({ news }: NewsCardProps) {
           }}
         />
       </div>
-      <div className="p-4">
-        <h3 className="text-[var(--text-primary)] font-semibold text-base line-clamp-2 mb-2">
+      <div className="p-3 sm:p-4">
+        <h3 className="text-[var(--text-primary)] font-semibold text-sm sm:text-base line-clamp-2 mb-1.5 sm:mb-2">
           {news.title}
         </h3>
-        <p className="text-[var(--text-secondary)] text-sm mb-3">
+        <p className="text-[var(--text-secondary)] text-xs sm:text-sm mb-2 sm:mb-3">
           {news.authors} - {news.sourceName}
         </p>
         <div className="flex items-center justify-between">
-          <span className={`px-2 py-1 rounded text-sm font-medium ${getSentimentColor(news.sentiment)}`}>
+          <span className={`px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-xs sm:text-sm font-medium ${getSentimentColor(news.sentiment)}`}>
             {news.sentiment}
           </span>
-          <time className="text-[var(--text-secondary)] text-sm">{formattedDate}</time>
+          <time className="text-[var(--text-secondary)] text-xs sm:text-sm">{formattedDate}</time>
         </div>
       </div>
     </a>

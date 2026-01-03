@@ -29,37 +29,37 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
   };
 
   return (
-    <div className="flex flex-col items-center gap-4 py-6">
+    <div className="flex flex-col items-center gap-3 sm:gap-4 py-4 sm:py-6">
       {/* Nút điều hướng */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4">
         <button
           onClick={() => onPageChange(currentPage - 1)}
           disabled={!canGoPrev}
-          className="px-5 py-2.5 bg-[var(--bg-tertiary)] text-[var(--text-primary)] rounded-lg text-base
+          className="px-3 sm:px-5 py-2 sm:py-2.5 bg-[var(--bg-tertiary)] text-[var(--text-primary)] rounded-lg text-sm sm:text-base
             disabled:opacity-50 disabled:cursor-not-allowed 
             hover:bg-[var(--bg-hover)] transition-colors
             border border-[var(--border-color)]"
         >
-          Trang trước
+          Trước
         </button>
-        <span className="text-[var(--text-secondary)] text-base">
-          Trang {currentPage} / {totalPages}
+        <span className="text-[var(--text-secondary)] text-sm sm:text-base">
+          {currentPage} / {totalPages}
         </span>
         <button
           onClick={() => onPageChange(currentPage + 1)}
           disabled={!canGoNext}
-          className="px-5 py-2.5 bg-[var(--bg-tertiary)] text-[var(--text-primary)] rounded-lg text-base
+          className="px-3 sm:px-5 py-2 sm:py-2.5 bg-[var(--bg-tertiary)] text-[var(--text-primary)] rounded-lg text-sm sm:text-base
             disabled:opacity-50 disabled:cursor-not-allowed 
             hover:bg-[var(--bg-hover)] transition-colors
             border border-[var(--border-color)]"
         >
-          Trang sau
+          Sau
         </button>
       </div>
 
       {/* Nhập số trang */}
-      <form onSubmit={handleGoToPage} className="flex items-center gap-3">
-        <span className="text-[var(--text-secondary)] text-base">Đi đến trang:</span>
+      <form onSubmit={handleGoToPage} className="flex items-center gap-2 sm:gap-3">
+        <span className="text-[var(--text-secondary)] text-sm sm:text-base hidden sm:inline">Đi đến:</span>
         <input
           type="number"
           min={1}
@@ -67,14 +67,14 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
           value={inputPage}
           onChange={(e) => setInputPage(e.target.value)}
           placeholder={String(currentPage)}
-          className="w-20 px-3 py-2 bg-[var(--bg-tertiary)] text-[var(--text-primary)] 
-            rounded-lg border border-[var(--border-color)] text-center text-base
+          className="w-16 sm:w-20 px-2 sm:px-3 py-1.5 sm:py-2 bg-[var(--bg-tertiary)] text-[var(--text-primary)] 
+            rounded-lg border border-[var(--border-color)] text-center text-sm sm:text-base
             focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]/50"
         />
         <button
           type="submit"
           disabled={!inputPage || parseInt(inputPage, 10) < 1 || parseInt(inputPage, 10) > totalPages}
-          className="px-4 py-2 bg-[var(--bg-tertiary)] text-[var(--text-primary)] rounded-lg text-base
+          className="px-3 sm:px-4 py-1.5 sm:py-2 bg-[var(--bg-tertiary)] text-[var(--text-primary)] rounded-lg text-sm sm:text-base
             disabled:opacity-50 disabled:cursor-not-allowed
             hover:bg-[var(--bg-hover)] transition-colors
             border border-[var(--border-color)]"

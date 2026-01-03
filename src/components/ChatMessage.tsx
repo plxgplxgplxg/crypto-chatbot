@@ -28,17 +28,17 @@ export function ChatMessage({ message }: ChatMessageProps) {
 
   return (
     <div 
-      className={`flex mb-4 animate-fade-in ${isUser ? 'justify-end' : 'justify-start'}`}
+      className={`flex mb-3 sm:mb-4 animate-fade-in ${isUser ? 'justify-end' : 'justify-start'}`}
     >
       <div
-        className={`max-w-[80%] px-4 py-3 rounded-2xl leading-relaxed ${
+        className={`max-w-[90%] sm:max-w-[80%] px-3 sm:px-4 py-2.5 sm:py-3 rounded-2xl leading-relaxed ${
           isUser
             ? 'bg-[var(--user-bubble)] text-[var(--text-primary)] rounded-br-sm'
             : 'bg-transparent text-[var(--text-primary)]'
         }`}
       >
         {isUser ? (
-          <p className="whitespace-pre-wrap text-base leading-relaxed">{message.content}</p>
+          <p className="whitespace-pre-wrap text-sm sm:text-base leading-relaxed">{message.content}</p>
         ) : (
           <div className="prose prose-sm max-w-none text-[var(--text-primary)] prose-strong:text-[var(--text-primary)] prose-strong:font-semibold">
             <ReactMarkdown>{formatMessage(message.content)}</ReactMarkdown>

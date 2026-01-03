@@ -36,7 +36,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
           disabled={disabled}
           rows={1}
           className="flex-1 bg-transparent text-[var(--text-primary)] 
-            px-4 py-3 resize-none 
+            px-3 sm:px-4 py-2.5 sm:py-3 resize-none text-sm sm:text-base
             focus:outline-none
             rounded-2xl
             placeholder:text-[var(--text-secondary)]
@@ -45,7 +45,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
         <button
           type="submit"
           disabled={disabled || !input.trim()}
-          className="mr-2 p-2 rounded-lg
+          className="mr-2 p-1.5 sm:p-2 rounded-lg
             bg-[var(--accent-color)] text-white
             hover:bg-[var(--accent-color)]/80
             disabled:opacity-30 disabled:cursor-not-allowed
@@ -56,7 +56,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
           </svg>
         </button>
       </div>
-      <p className="text-sm text-[var(--text-secondary)] text-center mt-2">
+      <p className="text-xs sm:text-sm text-[var(--text-secondary)] text-center mt-2">
         Enter để gửi, Shift+Enter để xuống dòng
       </p>
     </form>

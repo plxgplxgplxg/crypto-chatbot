@@ -68,11 +68,23 @@ body {
 /* Markdown styles */
 .prose {
   line-height: 1.75;
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .prose {
+    font-size: 0.9375rem;
+  }
 }
 
 .prose p {
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .prose p {
+    margin-bottom: 1rem;
+  }
 }
 
 .prose p:last-child {
@@ -97,10 +109,17 @@ body {
 }
 
 .prose ol > li {
-  margin: 1rem 0;
+  margin: 0.75rem 0;
   padding-left: 0.25rem;
   font-weight: 600;
-  font-size: 1.125rem;
+  font-size: 1rem;
+}
+
+@media (min-width: 640px) {
+  .prose ol > li {
+    margin: 1rem 0;
+    font-size: 1.125rem;
+  }
 }
 
 .prose ol > li > ul {
