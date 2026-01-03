@@ -64,3 +64,111 @@ body {
 .animate-fade-in {
   animation: fadeIn 0.3s ease-out;
 }
+
+/* Markdown styles */
+.prose {
+  line-height: 1.75;
+  font-size: 0.9375rem;
+}
+
+.prose p {
+  margin-bottom: 1rem;
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+.prose strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.prose ul {
+  list-style-type: disc;
+  margin: 0.75rem 0;
+  padding-left: 1.5rem;
+}
+
+.prose ol {
+  list-style-type: decimal;
+  margin: 0.75rem 0;
+  padding-left: 1.5rem;
+}
+
+.prose ol > li {
+  margin: 1rem 0;
+  padding-left: 0.25rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+.prose ol > li > ul {
+  font-weight: 400;
+  font-size: 0.9375rem;
+}
+
+.prose ol > li > p {
+  font-weight: 600;
+}
+
+.prose ol > li > ul li {
+  font-weight: 400;
+}
+
+.prose li {
+  margin: 0.5rem 0;
+  padding-left: 0.25rem;
+}
+
+.prose li::marker {
+  color: var(--text-secondary);
+}
+
+.prose ul ul, .prose ol ul {
+  list-style-type: circle;
+  margin: 0.25rem 0;
+}
+
+.prose ul ul ul {
+  list-style-type: square;
+}
+
+.prose code {
+  background: var(--bg-tertiary);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+.prose pre {
+  background: var(--bg-tertiary);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 0.75rem 0;
+}
+
+.prose h1, .prose h2, .prose h3 {
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+  color: var(--text-primary);
+}
+
+.prose h1 { font-size: 1.25rem; }
+.prose h2 { font-size: 1.125rem; }
+.prose h3 { 
+  font-size: 1rem;
+  margin-top: 1.25rem;
+}
+
+.prose h3:first-child {
+  margin-top: 0;
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--accent-color);
+  padding-left: 1rem;
+  margin: 0.75rem 0;
+  color: var(--text-secondary);
+}
