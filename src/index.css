@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* CSS Variables - Dark Theme (default) */
+:root {
+  --bg-primary: #0f0f0f;
+  --bg-secondary: #171717;
+  --bg-tertiary: #212121;
+  --bg-hover: #2a2a2a;
+  --text-primary: #ececec;
+  --text-secondary: #8e8e8e;
+  --border-color: #2f2f2f;
+  --accent-color: #10a37f;
+  --user-bubble: #2f2f2f;
+  --input-bg: #2f2f2f;
+  --input-border: #3f3f3f;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7f7f8;
+  --bg-tertiary: #ececec;
+  --bg-hover: #e5e5e5;
+  --text-primary: #1a1a1a;
+  --text-secondary: #6b6b6b;
+  --border-color: #d9d9d9;
+  --accent-color: #10a37f;
+  --user-bubble: #e5e5e5;
+  --input-bg: #f7f7f8;
+  --input-border: #d9d9d9;
+}
+
+/* Custom scrollbar */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Base styles */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
