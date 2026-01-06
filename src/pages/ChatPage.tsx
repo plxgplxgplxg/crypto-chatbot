@@ -7,7 +7,7 @@ import { useChat } from '../hooks/useChat';
 
 // Trang chat
 export function ChatPage() {
-  const { messages, loading, error, sendMessage, clearHistory } = useChat();
+  const { messages, loading, error, streamingMessageId, sendMessage, clearHistory, markStreamingComplete } = useChat();
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Auto scroll xuống tin nhắn mới
@@ -47,8 +47,14 @@ export function ChatPage() {
               </div>
             )}
 
-            {messages.map((msg) => (
-              <ChatMessage key={msg.id} message={msg} />
+            {messages.map((msg, index) => (
+              <ChatMessage 
+                key={msg.id} 
+                message={msg} 
+                isLatest={index === messages.length - 1}
+                enableTyping={msg.id === streamingMessageId}
+                onTypingComplete={markStreamingComplete}
+              />
             ))}
 
             {loading && <TypingIndicator />}

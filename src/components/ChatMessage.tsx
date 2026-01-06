@@ -1,8 +1,12 @@
 import ReactMarkdown from 'react-markdown';
 import type { ChatMessage as ChatMessageType } from '../types/api';
+import { useTypingEffect } from '../hooks/useTypingEffect';
 
 interface ChatMessageProps {
   message: ChatMessageType;
+  isLatest?: boolean;
+  enableTyping?: boolean;
+  onTypingComplete?: () => void;
 }
 
 // Format message để hiển thị đúng markdown
@@ -23,8 +27,31 @@ function formatMessage(content: string): string {
 }
 
 // Tin nhắn chat
-export function ChatMessage({ message }: ChatMessageProps) {
+export function ChatMessage({ 
+  message, 
+  isLatest = false, 
+  enableTyping = false,
+  onTypingComplete 
+}: ChatMessageProps) {
   const isUser = message.role === 'user';
+  const shouldType = !isUser && isLatest && enableTyping;
+
+  const { displayedText, isTyping, isComplete } = useTypingEffect({
+    text: message.content,
+    enabled: shouldType,
+  });
+
+  // Callback khi typing hoàn thành
+  if (isComplete && shouldType && onTypingComplete) {
+    onTypingComplete();
+  }
+
+  const contentToShow = shouldType ? displayedText : message.content;
+
+  // Thêm cursor vào cuối text trước khi render markdown
+  const contentWithCursor = isTyping 
+    ? contentToShow + '▋' 
+    : contentToShow;
 
   return (
     <div 
@@ -40,8 +67,8 @@ export function ChatMessage({ message }: ChatMessageProps) {
         {isUser ? (
           <p className="whitespace-pre-wrap text-sm sm:text-base leading-relaxed">{message.content}</p>
         ) : (
-          <div className="prose prose-sm max-w-none text-[var(--text-primary)] prose-strong:text-[var(--text-primary)] prose-strong:font-semibold">
-            <ReactMarkdown>{formatMessage(message.content)}</ReactMarkdown>
+          <div className={`prose prose-sm max-w-none text-[var(--text-primary)] prose-strong:text-[var(--text-primary)] prose-strong:font-semibold ${isTyping ? 'typing-cursor' : ''}`}>
+            <ReactMarkdown>{formatMessage(contentWithCursor)}</ReactMarkdown>
           </div>
         )}
       </div>

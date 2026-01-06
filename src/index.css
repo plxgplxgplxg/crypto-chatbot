@@ -112,13 +112,28 @@ body {
   margin: 0.75rem 0;
   padding-left: 0.25rem;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.0625rem;
+  color: var(--text-primary);
 }
 
 @media (min-width: 640px) {
   .prose ol > li {
     margin: 1rem 0;
-    font-size: 1.125rem;
+    font-size: 1.1875rem;
+  }
+}
+
+/* Nội dung bên trong list item nhỏ hơn */
+.prose ol > li p,
+.prose ol > li span {
+  font-size: 0.9375rem;
+  font-weight: 400;
+}
+
+@media (min-width: 640px) {
+  .prose ol > li p,
+  .prose ol > li span {
+    font-size: 1rem;
   }
 }
 
@@ -190,4 +205,20 @@ body {
   padding-left: 1rem;
   margin: 0.75rem 0;
   color: var(--text-secondary);
+}
+
+
+/* Typing cursor animation */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.typing-cursor {
+  /* Cursor nhấp nháy */
+}
+
+.typing-cursor p:last-child::after,
+.typing-cursor li:last-child::after {
+  content: '';
 }

@@ -28,6 +28,7 @@ export function useChat() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [streamingMessageId, setStreamingMessageId] = useState<string | null>(null);
 
   // Load messages
   useEffect(() => {
@@ -76,6 +77,7 @@ export function useChat() {
       };
 
       setMessages((prev) => [...prev, botMessage]);
+      setStreamingMessageId(botMessage.id);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Đã xảy ra lỗi');
     } finally {
@@ -86,8 +88,14 @@ export function useChat() {
   // Xóa lịch sử
   const clearHistory = useCallback(() => {
     setMessages([]);
+    setStreamingMessageId(null);
     sessionStorage.removeItem(STORAGE_KEY);
   }, []);
 
-  return { messages, loading, error, sendMessage, clearHistory };
+  // Đánh dấu streaming hoàn thành
+  const markStreamingComplete = useCallback(() => {
+    setStreamingMessageId(null);
+  }, []);
+
+  return { messages, loading, error, streamingMessageId, sendMessage, clearHistory, markStreamingComplete };
 }
