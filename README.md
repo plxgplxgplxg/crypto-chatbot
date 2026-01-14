@@ -10,6 +10,8 @@ Frontend React + TypeScript (Vite) + TailwindCSS.
 ```bash
 # npm
 npm install
+# or
+npm i
 # yarn
 yarn
 # pnpm
