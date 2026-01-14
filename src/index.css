@@ -222,3 +222,55 @@ body {
 .typing-cursor li:last-child::after {
   content: '';
 }
+
+/* Print styles - fix in trang chatbot */
+@media print {
+  /* Cho phép nội dung tràn nhiều trang */
+  html, body {
+    height: auto !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Bỏ giới hạn chiều cao */
+  .h-screen,
+  .chat-page {
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  /* Cho phép scroll area hiển thị hết */
+  .overflow-hidden,
+  .overflow-y-auto {
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  /* Flex container không giới hạn */
+  .chat-page .flex-1,
+  .chat-page main {
+    flex: none !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Ẩn input và footer khi in */
+  .chat-page .border-t {
+    display: none !important;
+  }
+
+  /* Ngắt trang hợp lý */
+  .prose {
+    page-break-inside: auto;
+  }
+
+  .prose li {
+    page-break-inside: avoid;
+  }
+
+  .prose h1, .prose h2, .prose h3 {
+    page-break-after: avoid;
+  }
+}

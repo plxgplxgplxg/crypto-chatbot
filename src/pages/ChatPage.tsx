@@ -16,7 +16,7 @@ export function ChatPage() {
   }, [messages, loading]);
 
   return (
-    <div className="flex flex-col h-screen bg-[var(--bg-primary)]">
+    <div className="chat-page flex flex-col h-screen bg-[var(--bg-primary)]">
       {/* Header với navigation */}
       <NavBar />
 
