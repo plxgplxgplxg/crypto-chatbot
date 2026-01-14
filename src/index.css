@@ -223,42 +223,50 @@ body {
   content: '';
 }
 
-/* Print styles - fix in trang chatbot */
+/* Print styles - fix in trang chatbot nhiều trang */
 @media print {
-  /* Cho phép nội dung tràn nhiều trang */
+  /* Reset tất cả giới hạn */
+  *, *::before, *::after {
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    position: static !important;
+  }
+
   html, body {
     height: auto !important;
     overflow: visible !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+    background: white !important;
   }
 
-  /* Bỏ giới hạn chiều cao */
-  .h-screen,
-  .chat-page {
+  /* Container chính */
+  .chat-page,
+  .chat-page > *,
+  .chat-page main,
+  .chat-page main > * {
+    display: block !important;
     height: auto !important;
     min-height: auto !important;
-  }
-
-  /* Cho phép scroll area hiển thị hết */
-  .overflow-hidden,
-  .overflow-y-auto {
-    overflow: visible !important;
-    height: auto !important;
     max-height: none !important;
-  }
-
-  /* Flex container không giới hạn */
-  .chat-page .flex-1,
-  .chat-page main {
-    flex: none !important;
-    height: auto !important;
     overflow: visible !important;
+    flex: none !important;
   }
 
-  /* Ẩn input và footer khi in */
-  .chat-page .border-t {
+  /* Ẩn các phần không cần in */
+  .chat-page .border-t,
+  .chat-page nav,
+  .chat-page header,
+  button {
     display: none !important;
+  }
+
+  /* Hiển thị tiêu đề */
+  .chat-page .border-b {
+    display: block !important;
+    border: none !important;
+    padding: 20px 0 !important;
   }
 
   /* Ngắt trang hợp lý */
@@ -272,5 +280,14 @@ body {
 
   .prose h1, .prose h2, .prose h3 {
     page-break-after: avoid;
+  }
+
+  /* Màu chữ đen cho in */
+  * {
+    color: #000 !important;
+  }
+
+  .prose strong {
+    color: #000 !important;
   }
 }
